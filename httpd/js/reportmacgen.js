@@ -50,34 +50,34 @@
       $('#addmacaddrbutton').on("click", function(){
         var addmacaddr = $('#addmacaddr').val();
         MACADDRS.push(addmacaddr);
-        buildSSIDList(MACADDRS);
+        buildMACList(MACADDRS);
         $('#addmacaddr').val('');
       })
 
       // remove MACADDRS
-      $('body').on("click",".removessid", function(){
+      $('body').on("click",".removemac", function(){
         // get the value from the custom data attribute
         var id = $(this).data('ssindex');
         MACADDRS.splice(id,1);
         // update the list
-        buildSSIDList(MACADDRS);
+        buildMACList(MACADDRS);
       });
 
-      function buildSSIDList(MACADDRS){
-        // clear the ssid label div and remove button
-        $('#ssidsarea div').remove();
-        $('#ssidsarea button').remove();
+      function buildMACList(MACADDRS){
+        // clear the MAC label div and remove button
+        $('#macsarea div').remove();
+        $('#macsarea button').remove();
         // rebuild the list based on the items of the MACADDRS array
         $.each(MACADDRS, function(index, MACADDRS){
-          $('#ssidsarea').append('<div class="ssid">'+MACADDRS+'</div><button class="removessid" data-ssindex="'+index+'">X</button>');
+          $('#macsarea').append('<div class="mac">'+MACADDRS+'</div><button class="removemac" data-ssindex="'+index+'">X</button>');
         });
       }
 
       $('#runreport').on("click", function(){
-          getBMACADDRS();
+          getTHEMACADDRS();
       })
 
-      function getBMACADDRS(){
+      function getTHEMACADDRS(){
         var clitotal = 0
         $.getJSON('/devices/last-time/0/devices.json').done(function(devs){
           for (var x in devs){
