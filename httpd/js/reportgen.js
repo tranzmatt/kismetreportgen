@@ -136,7 +136,7 @@
   })
 
 // Add to the sidebar
-// Prevent "ReferenceError: kismet_ui_sidebar is not defined" on plugin/reportgen/index.html
+// Prevent "ReferenceError: kismet_ui_sidebar is not defined" on plugin/reportmacgen/index.html
 // What's a better way to do this?
 var len = $('script[src*="kismet.ui.sidebar.js"]').length;
 
@@ -145,7 +145,7 @@ if(len>0){
       id: 'sidebar_reportgenlink',
       listTitle: '<i class="fa fa-gear" /> Report Gen',
       clickCallback: function() {
-      window.open('/plugin/reportgen/', '_blank');
+      window.open('/plugin/reportmacgen/', '_blank');
       }
   });
 }
