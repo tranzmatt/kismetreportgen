@@ -86,18 +86,33 @@
             var SSID = devs[x]['kismet.device.base.commonname']
             var key = devs[x]['kismet.device.base.key']
             var MAC = devs[x]['kismet.device.base.macaddr']
-            var BSSID = devs[x]['dot11.device']['dot11.device.last_bssid']
-            var signal = devs[x]['kismet.device.base.signal']['kismet.common.signal.last_signal']
-            var channel = devs[x]['kismet.device.base.channel']
-            var clientlist = Object.keys(devs[x]['dot11.device']['dot11.device.associated_client_map'])
-            var clientcount = devs[x]['dot11.device']['dot11.device.num_associated_clients']
+            var BSSID = ""
+	    var signal = 0
+	    var channel = 0
+	    var clientlist = null
+	    var clientcount = 0
+            if (devs[x]['dot11.device']){
+              BSSID = devs[x]['dot11.device']['dot11.device.last_bssid']
+              signal = devs[x]['kismet.device.base.signal']['kismet.common.signal.last_signal']
+              channel = devs[x]['kismet.device.base.channel']
+              clientlist = Object.keys(devs[x]['dot11.device']['dot11.device.associated_client_map'])
+              clientcount = devs[x]['dot11.device']['dot11.device.num_associated_clients']
+            }
+
             for (var y in SSIDS){
               if ( SSIDS[y] == SSID){
                 console.log('Found a match: ', SSIDS[y])
-                console.log('Clientlist:', clientlist.length)
-                clitotal = clitotal + clientlist.length
+		if (clientlist){
+		  console.log('Clientlist:', clientlist.length) 
+                  clitotal = clitotal + clientlist.length
+		}
                 aps.push({'id':key,'name':SSID,'bssid':BSSID,'crypt':crypt,'mac':MAC,'type':type,'count':clientcount, 'signal': signal,'channel':channel})
-                getClients(SSID, BSSID, crypt, key, clitotal)
+		if (clitotal > 0){
+                  getClients(SSID, BSSID, crypt, key, clitotal)
+		}
+		else{
+	          populateTable()
+		}
               }
             }
           }
@@ -136,7 +151,7 @@
   })
 
 // Add to the sidebar
-// Prevent "ReferenceError: kismet_ui_sidebar is not defined" on plugin/reportmacgen/index.html
+// Prevent "ReferenceError: kismet_ui_sidebar is not defined" on plugin/reportgen/index.html
 // What's a better way to do this?
 var len = $('script[src*="kismet.ui.sidebar.js"]').length;
 
@@ -145,7 +160,7 @@ if(len>0){
       id: 'sidebar_reportgenlink',
       listTitle: '<i class="fa fa-gear" /> Report Gen',
       clickCallback: function() {
-      window.open('/plugin/reportmacgen/', '_blank');
+      window.open('/plugin/reportgen/', '_blank');
       }
   });
 }
