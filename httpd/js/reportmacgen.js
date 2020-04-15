@@ -20,7 +20,7 @@
       var aps = []
       var clients = []
 
-      var table = new Tabulator("#reportgen-table", {
+      var table = new Tabulator("#reportmacgen-table", {
         layout:"fitColumns",
         groupBy:["name","bssid"],
           columns:[
@@ -65,11 +65,11 @@
 
       function buildSSIDList(SSIDS){
         // clear the ssid label div and remove button
-        $('#ssidsarea div').remove();
-        $('#ssidsarea button').remove();
+        $('#macsarea div').remove();
+        $('#macsarea button').remove();
         // rebuild the list based on the items of the SSIDS array
         $.each(SSIDS, function(index, SSIDS){
-          $('#ssidsarea').append('<div class="ssid">'+SSIDS+'</div><button class="removessid" data-ssindex="'+index+'">X</button>');
+          $('#macsarea').append('<div class="ssid">'+SSIDS+'</div><button class="removessid" data-ssindex="'+index+'">X</button>');
         });
       }
 
