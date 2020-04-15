@@ -4,9 +4,9 @@
 // Freeware, enjoy. If you do something really cool with it, let me know. Pull requests encouraged
 
 (
-    typeof define === "function" ? function (m) { define("plugin-reportmacgen-js", m); } :
+    typeof define === "function" ? function (m) { define("plugin-reportgen-js", m); } :
     typeof exports === "object" ? function (m) { module.exports = m(); } :
-    function(m){ this.reportmacgen = m(); }
+    function(m){ this.reportgen = m(); }
   )(function () {
 
     "use strict";
@@ -20,7 +20,7 @@
       var aps = []
       var clients = []
 
-      var table = new Tabulator("#reportmacgen-table", {
+      var table = new Tabulator("#reportgen-table", {
         layout:"fitColumns",
         groupBy:["name","bssid"],
           columns:[
@@ -65,11 +65,11 @@
 
       function buildSSIDList(SSIDS){
         // clear the ssid label div and remove button
-        $('#macsarea div').remove();
-        $('#macsarea button').remove();
+        $('#ssidsarea div').remove();
+        $('#ssidsarea button').remove();
         // rebuild the list based on the items of the SSIDS array
         $.each(SSIDS, function(index, SSIDS){
-          $('#macsarea').append('<div class="ssid">'+SSIDS+'</div><button class="removessid" data-ssindex="'+index+'">X</button>');
+          $('#ssidsarea').append('<div class="ssid">'+SSIDS+'</div><button class="removessid" data-ssindex="'+index+'">X</button>');
         });
       }
 
@@ -136,16 +136,16 @@
   })
 
 // Add to the sidebar
-// Prevent "ReferenceError: kismet_ui_sidebar is not defined" on plugin/reportmacgen/index.html
+// Prevent "ReferenceError: kismet_ui_sidebar is not defined" on plugin/reportgen/index.html
 // What's a better way to do this?
 var len = $('script[src*="kismet.ui.sidebar.js"]').length;
 
 if(len>0){
   kismet_ui_sidebar.AddSidebarItem({
-      id: 'sidebar_reportmacgenlink',
+      id: 'sidebar_reportgenlink',
       listTitle: '<i class="fa fa-gear" /> Report Gen',
       clickCallback: function() {
-      window.open('/plugin/reportmacgen/', '_blank');
+      window.open('/plugin/reportgen/', '_blank');
       }
   });
 }

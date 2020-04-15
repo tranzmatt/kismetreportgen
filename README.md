@@ -5,7 +5,7 @@ sudo make install
 
 Start kismet.
 
-In browser, navigate to http://localhost:2501/plugin/reportmacgen/
+In browser, navigate to http://localhost:2501/plugin/reportgen/
 
 The trailing '/' is very important.
 

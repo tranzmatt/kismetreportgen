@@ -1,23 +1,23 @@
 <!doctype html>
 <html>
     <head>
-    <link rel="stylesheet" type="text/css" href="/plugin/reportmacgen/css/reportmacgen.css">
-    <link rel="stylesheet" type="text/css" href="/plugin/reportmacgen/css/tabulator_midnight.min.css">
+    <link rel="stylesheet" type="text/css" href="/plugin/reportgen/css/reportgen.css">
+    <link rel="stylesheet" type="text/css" href="/plugin/reportgen/css/tabulator_midnight.min.css">
     <script src="/js/jquery-3.1.0.min.js"></script>
-    <script src="/plugin/reportmacgen/js/jspdf.min.js"></script>
-    <script src="/plugin/reportmacgen/js/jspdf.plugin.autotable.min.js"></script>
-    <script src="/plugin/reportmacgen/js/tabulator.min.js"></script>
-    <script src="/plugin/reportmacgen/js/reportmacgen.js"></script>
+    <script src="/plugin/reportgen/js/jspdf.min.js"></script>
+    <script src="/plugin/reportgen/js/jspdf.plugin.autotable.min.js"></script>
+    <script src="/plugin/reportgen/js/tabulator.min.js"></script>
+    <script src="/plugin/reportgen/js/reportgen.js"></script>
     <meta charset="utf-8" />
     </head>
 
     <body>
         <div id="controlbar">
-            <label for="addssid">MAC:</label><input id="addssid" type="text"><button id="addssidbutton">Add</button>
+            <label for="addssid">SSID:</label><input id="addssid" type="text"><button id="addssidbutton">Add</button>
             <button id="runreport">Run Report</button>
             <button id="download-pdf">Download PDF</button><button id="download-csv">Download CSV</button>
-            <div id="macsarea"></div>
-            <div id="reportmacgen-table"></div>
+            <div id="ssidsarea"></div>
+            <div id="reportgen-table"></div>
         </div>
     </body>
 </html>
