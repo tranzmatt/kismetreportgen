@@ -4,9 +4,9 @@
 // Freeware, enjoy. If you do something really cool with it, let me know. Pull requests encouraged
 
 (
-    typeof define === "function" ? function (m) { define("plugin-macaddrlist-js", m); } :
+    typeof define === "function" ? function (m) { define("plugin-reportgen-js", m); } :
     typeof exports === "object" ? function (m) { module.exports = m(); } :
-    function(m){ this.macaddrlist = m(); }
+    function(m){ this.reportgen = m(); }
   )(function () {
 
     "use strict";
@@ -15,20 +15,20 @@
     exports.load_complete = 0;
     $(document).ready(function(){
 
-      var MACADDRS = []
+      var SSIDS = []
       var devices = []
       var aps = []
       var clients = []
 
-      var table = new Tabulator("#macaddrlist-table", {
+      var table = new Tabulator("#reportgen-table", {
         layout:"fitColumns",
         groupBy:["name","bssid"],
           columns:[
-              {title:"MAC", field:"mac", sorter:"string", align:"right"},
               {title:"SSID", field:"name", sorter:"string"},
               {title:"Nickname", field:"nickname",sorter:"string"},
               {title:"BSSID", field:"bssid", sorter:"string", align:"right"},
               {title:"Encryption", field:"crypt", sorter:"string", align:"center"},
+              {title:"MAC", field:"mac", sorter:"string", align:"right"},
               {title:"Type", field:"type", sorter:"string", align:"right"},
               {title:"Client Count", field:"count", sorter:"number"},
               {title:"Signal", field:"signal", sorter:"number"},
@@ -47,37 +47,37 @@
         table.download("csv", "WiFi-Report.csv")
       })
 
-      $('#addmacaddrbutton').on("click", function(){
-        var addmacaddr = $('#addmacaddr').val();
-        MACADDRS.push(addmacaddr);
-        buildMACList(MACADDRS);
-        $('#addmacaddr').val('');
+      $('#addssidbutton').on("click", function(){
+        var addssid = $('#addssid').val();
+        SSIDS.push(addssid);
+        buildSSIDList(SSIDS);
+        $('#addssid').val('');
       })
 
-      // remove MACADDRS
-      $('body').on("click",".removemac", function(){
+      // remove SSIDS
+      $('body').on("click",".removessid", function(){
         // get the value from the custom data attribute
         var id = $(this).data('ssindex');
-        MACADDRS.splice(id,1);
+        SSIDS.splice(id,1);
         // update the list
-        buildMACList(MACADDRS);
+        buildSSIDList(SSIDS);
       });
 
-      function buildMACList(MACADDRS){
-        // clear the MAC label div and remove button
-        $('#macsarea div').remove();
-        $('#macsarea button').remove();
-        // rebuild the list based on the items of the MACADDRS array
-        $.each(MACADDRS, function(index, MACADDRS){
-          $('#macsarea').append('<div class="mac">'+MACADDRS+'</div><button class="removemac" data-ssindex="'+index+'">X</button>');
+      function buildSSIDList(SSIDS){
+        // clear the ssid label div and remove button
+        $('#ssidsarea div').remove();
+        $('#ssidsarea button').remove();
+        // rebuild the list based on the items of the SSIDS array
+        $.each(SSIDS, function(index, SSIDS){
+          $('#ssidsarea').append('<div class="ssid">'+SSIDS+'</div><button class="removessid" data-ssindex="'+index+'">X</button>');
         });
       }
 
       $('#runreport').on("click", function(){
-          getTHEMACADDRS();
+          getBSSIDS();
       })
 
-      function getTHEMACADDRS(){
+      function getBSSIDS(){
         var clitotal = 0
         $.getJSON('/devices/last-time/0/devices.json').done(function(devs){
           for (var x in devs){
@@ -91,9 +91,9 @@
             var channel = devs[x]['kismet.device.base.channel']
             var clientlist = Object.keys(devs[x]['dot11.device']['dot11.device.associated_client_map'])
             var clientcount = devs[x]['dot11.device']['dot11.device.num_associated_clients']
-            for (var y in MACADDRS){
-              if ( MACADDRS[y] == MAC){
-                console.log('Found a match: ', MACADDRS[y])
+            for (var y in SSIDS){
+              if ( SSIDS[y] == SSID){
+                console.log('Found a match: ', SSIDS[y])
                 console.log('Clientlist:', clientlist.length)
                 clitotal = clitotal + clientlist.length
                 aps.push({'id':key,'name':SSID,'bssid':BSSID,'crypt':crypt,'mac':MAC,'type':type,'count':clientcount, 'signal': signal,'channel':channel})
@@ -136,16 +136,16 @@
   })
 
 // Add to the sidebar
-// Prevent "ReferenceError: kismet_ui_sidebar is not defined" on plugin/macaddrlist/index.html
+// Prevent "ReferenceError: kismet_ui_sidebar is not defined" on plugin/reportgen/index.html
 // What's a better way to do this?
 var len = $('script[src*="kismet.ui.sidebar.js"]').length;
 
 if(len>0){
   kismet_ui_sidebar.AddSidebarItem({
-      id: 'sidebar_macaddrlistlink',
+      id: 'sidebar_reportgenlink',
       listTitle: '<i class="fa fa-gear" /> Report Gen',
       clickCallback: function() {
-      window.open('/plugin/macaddrlist/', '_blank');
+      window.open('/plugin/reportgen/', '_blank');
       }
   });
 }
