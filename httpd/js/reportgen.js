@@ -99,12 +99,12 @@
         console.log("addmintime: ", addmintime);
       })
 
-      // remove maxtime
-      $('body').on("click",".removemaxtime", function(){
-        addmaxtime = 0;
-        $('#maxtimearea div').remove();
-        $('#maxtimearea button').remove();
-        $('#maxtimearea').append('<div class="maxtime">'addmaxtime'</div><button class="removemaxtime">X</button>');
+      // remove mintime
+      $('body').on("click",".removemintime", function(){
+        addmintime = 0;
+        $('#mintimearea div').remove();
+        $('#mintimearea button').remove();
+        $('#mintimearea').append('<div class="mintime">'addmintime'</div><button class="removemintime">X</button>');
       });
 
       $('#runreport').on("click", function(){
