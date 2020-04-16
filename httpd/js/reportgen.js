@@ -13,7 +13,7 @@
 
     var exports = {};
     var afterepoch = 0;
-    var beforeepoch = 0;
+    var beforeepoch = Math.round(Date.now() / 1000);
     exports.load_complete = 0;
     $(document).ready(function(){
 
@@ -90,7 +90,7 @@
 
       // remove beforeepoch
       $('body').on("click",".removebeforeepoch", function(){
-        beforeepoch = 0;
+	beforeepoch = Math.round(Date.now() / 1000);
         $('#beforeepocharea div').remove();
         $('#beforeepocharea button').remove();
         console.log("beforeepoch: ", beforeepoch);
@@ -128,6 +128,7 @@
             var SSID = devs[x]['kismet.device.base.commonname']
             var key = devs[x]['kismet.device.base.key']
             var MAC = devs[x]['kismet.device.base.macaddr']
+	    var lasttime = devs[x]['kismet.device.base.last_time']
             var BSSID = ""
 	    var signal = 0
 	    var channel = 0
@@ -142,7 +143,9 @@
             }
 
             for (var y in SSIDS){
-              if ( SSIDS[y] == SSID){
+	      //console.log('Checking time range:', afterepoch, ">=", lasttime, "<=", beforeepoch);
+	      var timerange = ( lasttime <= beforeepoch && lasttime >= afterepoch ) ? true : false;
+              if ( SSID.includes(SSIDS[y]) && timerange ){
                 console.log('Found a match: ', SSIDS[y])
 		if (clientlist){
 		  console.log('Clientlist:', clientlist.length) 
