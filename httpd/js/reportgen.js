@@ -12,8 +12,8 @@
     "use strict";
 
     var exports = {};
-    var mintime = 0;
-    var maxtime = 0;
+    var afterepoch = 0;
+    var beforeepoch = 0;
     exports.load_complete = 0;
     $(document).ready(function(){
 
@@ -77,36 +77,36 @@
         });
       }
 
-      $('#addmaxtimebutton').on("click", function(){
-        console.log("clicked addmaxtimebutton");
-        maxtime = $('#addmaxtime').val();
-        $('#addmaxtime').val('');
-        $('#maxtimearea').append('<div class="maxtime">'+maxtime+'</div><button class="removemaxtime">X</button>');
-        console.log("maxtime: ", maxtime);
+      $('#addbeforeepochbutton').on("click", function(){
+        console.log("clicked addbeforeepochbutton");
+        beforeepoch = $('#addbeforeepoch').val();
+        $('#addbeforeepoch').val('');
+        $('#beforeepocharea').append('<div class="beforeepoch">'+beforeepoch+'</div><button class="removebeforeepoch">X</button>');
+        console.log("beforeepoch: ", beforeepoch);
       })
 
-      // remove maxtime
-      $('body').on("click",".removemaxtime", function(){
-        maxtime = 0;
-        $('#maxtimearea div').remove();
-        $('#maxtimearea button').remove();
-        console.log("maxtime: ", maxtime);
+      // remove beforeepoch
+      $('body').on("click",".removebeforeepoch", function(){
+        beforeepoch = 0;
+        $('#beforeepocharea div').remove();
+        $('#beforeepocharea button').remove();
+        console.log("beforeepoch: ", beforeepoch);
       });
 
-      $('#addmintimebutton').on("click", function(){
-        console.log("clicked addmintimebutton");
-        mintime = $('#addmintime').val();
-        $('#addmintime').val('');
-        $('#mintimearea').append('<div class="mintime">'+mintime+'</div><button class="removemintime">X</button>');
-        console.log("mintime: ", mintime);
+      $('#addafterepochbutton').on("click", function(){
+        console.log("clicked addafterepochbutton");
+        afterepoch = $('#addafterepoch').val();
+        $('#addafterepoch').val('');
+        $('#afterepocharea').append('<div class="afterepoch">'+afterepoch+'</div><button class="removeafterepoch">X</button>');
+        console.log("afterepoch: ", afterepoch);
       })
 
-      // remove mintime
-      $('body').on("click",".removemintime", function(){
-        mintime = 0;
-        $('#mintimearea div').remove();
-        $('#mintimearea button').remove();
-        console.log("mintime: ", mintime);
+      // remove afterepoch
+      $('body').on("click",".removeafterepoch", function(){
+        afterepoch = 0;
+        $('#afterepocharea div').remove();
+        $('#afterepocharea button').remove();
+        console.log("afterepoch: ", afterepoch);
       });
 
       $('#runreport').on("click", function(){
