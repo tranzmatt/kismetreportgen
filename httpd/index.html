@@ -14,8 +14,12 @@
     <body>
         <div id="controlbar">
             <label for="addssid">SSID:</label><input id="addssid" type="text"><button id="addssidbutton">Add</button>
+            <label for="addmintime">After Epoch:</label><input id="addmintime" type="text"><button id="addmintimebutton">Add</button>
+            <label for="addmaxtime">Before Epoch:</label><input id="addmaxtime" type="text"><button id="addmaxtimebutton">Add</button>
             <button id="runreport">Run Report</button>
             <button id="download-pdf">Download PDF</button><button id="download-csv">Download CSV</button>
+            <div id="mintimearea"></div>
+            <div id="maxtimearea"></div>
             <div id="ssidsarea"></div>
             <div id="reportgen-table"></div>
         </div>

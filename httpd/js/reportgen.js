@@ -12,6 +12,8 @@
     "use strict";
 
     var exports = {};
+    var mintime = 0;
+    var maxtime = 0;
     exports.load_complete = 0;
     $(document).ready(function(){
 
@@ -49,6 +51,7 @@
 
       $('#addssidbutton').on("click", function(){
         var addssid = $('#addssid').val();
+        console.log("clicked addssidbutton");
         SSIDS.push(addssid);
         buildSSIDList(SSIDS);
         $('#addssid').val('');
@@ -65,6 +68,7 @@
 
       function buildSSIDList(SSIDS){
         // clear the ssid label div and remove button
+        console.log("buildSSIDList running");
         $('#ssidsarea div').remove();
         $('#ssidsarea button').remove();
         // rebuild the list based on the items of the SSIDS array
@@ -72,6 +76,36 @@
           $('#ssidsarea').append('<div class="ssid">'+SSIDS+'</div><button class="removessid" data-ssindex="'+index+'">X</button>');
         });
       }
+
+      $('#addmaxtimebutton').on("click", function(){
+        console.log("clicked addmaxtimebutton");
+        addmaxtime = $('#addmaxtime').val();
+        $('#addmaxtime').val('');
+        console.log("addmaxtime: ", addmaxtime);
+      })
+
+      // remove maxtime
+      $('body').on("click",".removemaxtime", function(){
+        addmaxtime = 0;
+        $('#maxtimearea div').remove();
+        $('#maxtimearea button').remove();
+        $('#maxtimearea').append('<div class="maxtime">'addmaxtime'</div><button class="removemaxtime">X</button>');
+      });
+
+      $('#addmintimebutton').on("click", function(){
+        console.log("clicked addmintimebutton");
+        addmintime = $('#addmintime').val();
+        $('#addmintime').val('');
+        console.log("addmintime: ", addmintime);
+      })
+
+      // remove maxtime
+      $('body').on("click",".removemaxtime", function(){
+        addmaxtime = 0;
+        $('#maxtimearea div').remove();
+        $('#maxtimearea button').remove();
+        $('#maxtimearea').append('<div class="maxtime">'addmaxtime'</div><button class="removemaxtime">X</button>');
+      });
 
       $('#runreport').on("click", function(){
           getBSSIDS();
