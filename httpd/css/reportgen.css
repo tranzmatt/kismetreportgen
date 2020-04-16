@@ -9,18 +9,6 @@
     margin: 5px;
   }
   
-  #mintimearea{
-    border: 1px dotted black;
-    height: 50px;
-    margin: 5px;
-  }
-
-  #maxtimearea{
-    border: 1px dotted black;
-    height: 50px;
-    margin: 5px;
-  }
-
   .ssid{
     margin: 5px;
     border: 1px solid black;
@@ -51,6 +39,12 @@
     margin: 5px;
   }
 
+  #mintimearea{
+    border: 1px dotted black;
+    height: 50px;
+    margin: 5px;
+  }
+
   .maxtime{
     margin: 5px;
     border: 1px solid black;
@@ -63,6 +57,12 @@
     width: 10px;
     height: 10px;
     display: inline-block;
+    margin: 5px;
+  }
+
+  #maxtimearea{
+    border: 1px dotted black;
+    height: 50px;
     margin: 5px;
   }
 

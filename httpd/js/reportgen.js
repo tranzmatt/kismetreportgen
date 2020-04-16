@@ -79,32 +79,34 @@
 
       $('#addmaxtimebutton').on("click", function(){
         console.log("clicked addmaxtimebutton");
-        addmaxtime = $('#addmaxtime').val();
+        maxtime = $('#addmaxtime').val();
         $('#addmaxtime').val('');
-        console.log("addmaxtime: ", addmaxtime);
+        $('#maxtimearea').append('<div class="maxtime">'+maxtime+'</div><button class="removemaxtime">X</button>');
+        console.log("maxtime: ", maxtime);
       })
 
       // remove maxtime
       $('body').on("click",".removemaxtime", function(){
-        addmaxtime = 0;
+        maxtime = 0;
         $('#maxtimearea div').remove();
         $('#maxtimearea button').remove();
-        $('#maxtimearea').append('<div class="maxtime">'addmaxtime'</div><button class="removemaxtime">X</button>');
+        console.log("maxtime: ", maxtime);
       });
 
       $('#addmintimebutton').on("click", function(){
         console.log("clicked addmintimebutton");
-        addmintime = $('#addmintime').val();
+        mintime = $('#addmintime').val();
         $('#addmintime').val('');
-        console.log("addmintime: ", addmintime);
+        $('#mintimearea').append('<div class="mintime">'+mintime+'</div><button class="removemintime">X</button>');
+        console.log("mintime: ", mintime);
       })
 
       // remove mintime
       $('body').on("click",".removemintime", function(){
-        addmintime = 0;
+        mintime = 0;
         $('#mintimearea div').remove();
         $('#mintimearea button').remove();
-        $('#mintimearea').append('<div class="mintime">'addmintime'</div><button class="removemintime">X</button>');
+        console.log("mintime: ", mintime);
       });
 
       $('#runreport').on("click", function(){
