@@ -75,11 +75,14 @@
         $.each(SSIDS, function(index, SSIDS){
           $('#ssidsarea').append('<div class="ssid">'+SSIDS+'</div><button class="removessid" data-ssindex="'+index+'">X</button>');
         });
+        console.log("buildSSIDList finished");
       }
 
       $('#addbeforeepochbutton').on("click", function(){
         console.log("clicked addbeforeepochbutton");
         beforeepoch = $('#addbeforeepoch').val();
+        $('#beforeepocharea div').remove();
+        $('#beforeepocharea button').remove();
         $('#addbeforeepoch').val('');
         $('#beforeepocharea').append('<div class="beforeepoch">'+beforeepoch+'</div><button class="removebeforeepoch">X</button>');
         console.log("beforeepoch: ", beforeepoch);
@@ -96,6 +99,8 @@
       $('#addafterepochbutton').on("click", function(){
         console.log("clicked addafterepochbutton");
         afterepoch = $('#addafterepoch').val();
+        $('#afterepocharea div').remove();
+        $('#afterepocharea button').remove();
         $('#addafterepoch').val('');
         $('#afterepocharea').append('<div class="afterepoch">'+afterepoch+'</div><button class="removeafterepoch">X</button>');
         console.log("afterepoch: ", afterepoch);
@@ -109,7 +114,8 @@
         console.log("afterepoch: ", afterepoch);
       });
 
-      $('#runreport').on("click", function(){
+      $('#runsearch').on("click", function(){
+          console.log("running search");
           getBSSIDS();
       })
 

@@ -13,15 +13,20 @@
 
     <body>
         <div id="controlbar">
-            <label for="addssid">MAC:</label><input id="addssid" type="text"><button id="addssidbutton">Add</button>
-            <label for="addafterepoch">After Epoch:</label><input id="addafterepoch" type="text"><button id="addafterepochbutton">Add</button>
-            <label for="addbeforeepoch">Before Epoch:</label><input id="addbeforeepoch" type="text"><button id="addbeforeepochbutton">Add</button>
-            <button id="runreport">Run Report</button>
-            <button id="download-pdf">Download PDF</button><button id="download-csv">Download CSV</button>
-            <div id="ssidsarea"></div>
+	<div id="inputarea">
+		<label for="addssid"><strong>MAC:</strong></label><input id="addssid" type="text"><button id="addssidbutton">Add</button>
+		<label for="addafterepoch"><strong>After Epoch:</strong></label><input id="addafterepoch" type="text"><button id="addafterepochbutton">Add</button>
+		<label for="addbeforeepoch"><strong>Before Epoch:</strong></label><input id="addbeforeepoch" type="text"><button id="addbeforeepochbutton">Add</button>
+	</div>
+	<div id="buttonarea">
+		<button id="runsearch"><strong>Search</strong></button>
+		<button id="download-pdf"><strong>Download PDF</strong></button>
+		<button id="download-csv"><strong>Download CSV</strong></button>
+	</div>
+	<div id="ssidsarea"><strong>MACS:</strong></div>
 	    <div id="epochcontainer">
-                 <div id="afterepocharea"></div>
-                 <div id="beforeepocharea"></div>
+		    <div id="afterepocharea"><strong>After Epoch:</strong></div>
+		    <div id="beforeepocharea"><strong>Before Epoch:</strong></div>
 	    </div>
             <div id="reportgen-table"></div>
         </div>
