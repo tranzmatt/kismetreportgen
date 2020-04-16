@@ -24,17 +24,39 @@
     margin: 5px;
   }
 
+  #epochcontainer{
+    display: flex;
+  }
+  
   .epochcontainer{
+    display: flex;
+  }
+
+  .afterepoch{
+    flex: 0 0 50%;
     margin: 5px;
     border: 1px solid black;
     display: inline-block;
   }
 
-  .afterepoch{
-    width: 50%;
+  #afterepocharea{
+    flex: 0 0 50%;
+    border: 1px dotted black;
+    height: 50px;
+    margin: 5px;
+  }
+
+  .beforeepoch{
+    flex: 1;
     margin: 5px;
     border: 1px solid black;
-    display: inline-block;
+  }
+
+  #beforeepocharea{
+    flex: 1;
+    border: 1px dotted black;
+    height: 50px;
+    margin: 5px;
   }
 
   .removeafterepoch{
@@ -46,19 +68,7 @@
     margin: 5px;
   }
 
-  #afterepocharea{
-    width: 50%;
-    border: 1px dotted black;
-    height: 50px;
-    margin: 5px;
-  }
 
-  .beforeepoch{
-    width: 50%;
-    margin: 5px;
-    border: 1px solid black;
-    display: inline-block;
-  }
 
   .removebeforeepoch{
     border: 1px solid black;
@@ -69,10 +79,4 @@
     margin: 5px;
   }
 
-  #beforeepocharea{
-    width: 50%;
-    border: 1px dotted black;
-    height: 50px;
-    margin: 5px;
-  }
 
