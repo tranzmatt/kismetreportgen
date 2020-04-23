@@ -4,9 +4,9 @@
 // Freeware, enjoy. If you do something really cool with it, let me know. Pull requests encouraged
 
 (
-    typeof define === "function" ? function (m) { define("plugin-reportgen-js", m); } :
+    typeof define === "function" ? function (m) { define("plugin-reportmacgen-js", m); } :
     typeof exports === "object" ? function (m) { module.exports = m(); } :
-    function(m){ this.reportgen = m(); }
+    function(m){ this.reportmacgen = m(); }
   )(function () {
 
     "use strict";
@@ -22,7 +22,7 @@
       var aps = []
       var clients = []
 
-      var table = new Tabulator("#reportgen-table", {
+      var table = new Tabulator("#reportmacgen-table", {
         layout:"fitColumns",
         groupBy:["name","bssid"],
           columns:[
@@ -196,16 +196,16 @@
   })
 
 // Add to the sidebar
-// Prevent "ReferenceError: kismet_ui_sidebar is not defined" on plugin/reportgen/index.html
+// Prevent "ReferenceError: kismet_ui_sidebar is not defined" on plugin/reportmacgen/index.html
 // What's a better way to do this?
 var len = $('script[src*="kismet.ui.sidebar.js"]').length;
 
 if(len>0){
   kismet_ui_sidebar.AddSidebarItem({
-      id: 'sidebar_reportgenlink',
-      listTitle: '<i class="fa fa-gear" /> Report Gen',
+      id: 'sidebar_reportmacgenlink',
+      listTitle: '<i class="fa fa-gear" /> Report MacGen',
       clickCallback: function() {
-      window.open('/plugin/reportgen/', '_blank');
+      window.open('/plugin/reportmacgen/', '_blank');
       }
   });
 }
